@@ -6,6 +6,8 @@ const readline = require('readline');
 // تمام تنظیمات از فایل .env خوانده می‌شوند
 const API_URL = process.env.API_URL || 'http://217.20.252.203/api/v1/rest/sms/pattern-send';
 const API_TOKEN = process.env.API_TOKEN;
+const API_USERNAME = process.env.API_USERNAME;
+const API_PASSWORD = process.env.API_PASSWORD;
 const SENDER_NUMBER = process.env.SENDER_NUMBER;
 const PATTERN_ID = process.env.PATTERN_ID;
 
@@ -15,7 +17,7 @@ function translateError(error) {
     if (error.response) {
         const status = error.response.status;
         if (status === 400) return "درخواست ارسالی نامعتبر است (400).";
-        if (status === 401) return "توکن احراز هویت اشتباه یا منقضی شده است (401).";
+        if (status === 401) return "اطلاعات احراز هویت (توکن، نام کاربری یا رمز عبور) اشتباه است (401).";
         if (status >= 500) return `خطای داخلی در سرور رخ داده است (${status}).`;
     } else if (error.request) {
         return "پاسخی از سرور دریافت نشد. شبکه یا آدرس سرویس را بررسی کنید.";
@@ -36,10 +38,12 @@ async function sendVerificationCode(phoneNumber, code) {
         type: 0
     };
 
-    // در این سرویس، توکن در هدر username ارسال می‌شود
+    // اصلاح هدر برای ارسال هر سه پارامتر احراز هویت
     const headers = {
-        'username': API_TOKEN, 
-        'Content-Type': 'application/json',
+        'token': API_TOKEN,
+        'username': API_USERNAME,
+        'password': API_PASSWORD,
+        'Content-Type': 'application/json'
     };
 
     console.log(`\n🚀 در حال ارسال کد ${code} به شماره ${phoneNumber}...`);
@@ -58,8 +62,8 @@ async function sendVerificationCode(phoneNumber, code) {
 // --- Main Application Logic (CLI) ---
 
 function startCli() {
-    if (!API_TOKEN || !SENDER_NUMBER) {
-        console.error('❌ خطا: توکن (API_TOKEN) یا شماره فرستنده (SENDER_NUMBER) در فایل .env تعریف نشده است.');
+    if (!API_TOKEN || !API_USERNAME || !API_PASSWORD || !SENDER_NUMBER) {
+        console.error('❌ خطا: یک یا چند مورد از اطلاعات احراز هویت (توکن، نام کاربری، رمز عبور، شماره فرستنده) در فایل .env تعریف نشده است.');
         process.exit(1);
     }
 
