@@ -1,0 +1,12 @@
+2025-10-07T08:29:36.505Z [INFO] Attempting to send code {"phone":"09919901583","mode":"tcp"}
+2025-10-07T08:29:36.560Z [DEBUG] TCP payload {"host":"87.248.139.249","port":8765,"payload":"ID:1senik2;TO:09919901583;MSG:کد تایید شما: 687326<EOF>"}
+2025-10-07T08:29:43.606Z [ERROR] TCP send failed {"phone":"09919901583","message":"timeout waiting for tcp response","stack":"Error: timeout waiting for tcp response\n    at Timeout._onTimeout (D:\\codesms\\CODESEND\\lib\\gatewayClient.js:62:14)\n    at listOnTimeout (node:internal/timers:588:17)\n    at process.processTimers (node:internal/timers:523:7)"}
+2025-10-07T08:30:54.878Z [INFO] Attempting to send code {"phone":"9919901583","mode":"tcp"}
+2025-10-07T08:30:54.880Z [DEBUG] TCP payload {"host":"87.248.139.249","port":8765,"payload":"ID:1senik2;TO:9919901583;MSG:کد تایید شما: 821616<EOF>"}
+2025-10-07T08:31:01.953Z [ERROR] TCP send failed {"phone":"9919901583","message":"timeout waiting for tcp response","stack":"Error: timeout waiting for tcp response\n    at Timeout._onTimeout (D:\\codesms\\CODESEND\\lib\\gatewayClient.js:62:14)\n    at listOnTimeout (node:internal/timers:588:17)\n    at process.processTimers (node:internal/timers:523:7)"}
+2025-10-07T08:31:07.572Z [INFO] Attempting to send code {"phone":"09919901583","mode":"tcp"}
+2025-10-07T08:31:07.574Z [DEBUG] TCP payload {"host":"87.248.139.249","port":8765,"payload":"ID:1senik2;TO:09919901583;MSG:کد تایید شما: 341933<EOF>"}
+2025-10-07T08:31:14.586Z [ERROR] TCP send failed {"phone":"09919901583","message":"timeout waiting for tcp response","stack":"Error: timeout waiting for tcp response\n    at Timeout._onTimeout (D:\\codesms\\CODESEND\\lib\\gatewayClient.js:62:14)\n    at listOnTimeout (node:internal/timers:588:17)\n    at process.processTimers (node:internal/timers:523:7)"}
+2025-10-07T08:32:02.134Z [INFO] Attempting to send code {"phone":"09919901583","mode":"tcp"}
+2025-10-07T08:32:02.135Z [DEBUG] TCP payload {"host":"87.248.139.249","port":8765,"payload":"ID:1senik2;TO:09919901583;MSG:کد تایید شما: 702096<EOF>"}
+2025-10-07T08:32:09.145Z [ERROR] TCP send failed {"phone":"09919901583","message":"timeout waiting for tcp response","stack":"Error: timeout waiting for tcp response\n    at Timeout._onTimeout (D:\\codesms\\CODESEND\\lib\\gatewayClient.js:62:14)\n    at listOnTimeout (node:internal/timers:588:17)\n    at process.processTimers (node:internal/timers:523:7)"}
