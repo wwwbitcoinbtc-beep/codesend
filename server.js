@@ -42,12 +42,13 @@ async function getAccessToken() {
 async function sendSmsWithToken(accessToken, phoneNumber, code) {
     const sendUrl = `http://${SERVER_IP}/SMS/Send`;
     console.log(`- مرحله ۲: در حال ارسال کد ${code} به شماره ${phoneNumber}...`);
+    
     const requestBody = {
         ServerIpAddress: SERVER_IP,
         AccessToken: PANEL_STATIC_TOKEN,
         SenderNumber: SENDER_NUMBER,
         MessageBodies: [code],
-        RecipientNumbers: [phoneNumber]
+        RecipientNumbers:[phoneNumber]
     };
     const headers = { 'Authorization': `Bearer ${accessToken}`, 'Content-Type': 'application/json' };
 
@@ -82,23 +83,11 @@ async function main() {
         return;
     }
 
-    // ۲. دریافت شماره گیرنده از کامند-لاین
-    const recipientNumber = process.argv[2];
-    if (!recipientNumber) {
-        console.error('❌ خطا: لطفاً شماره موبایل گیرنده را به عنوان آرگومان وارد کنید.');
-        console.log('   مثال: node server.js 09123456789');
-        return;
-    }
-    if (!/^(\+98|0)?9\d{9}$/.test(recipientNumber)) {
-        console.warn('❌ خطا: فرمت شماره موبایل وارد شده نامعتبر است.');
-        return;
-    }
-
     // ۳. اجرای فرآیند ارسال
     const accessToken = await getAccessToken();
     if (accessToken) {
         const randomCode = generateSixDigitCode();
-        await sendSmsWithToken(accessToken, recipientNumber, randomCode);
+        await sendSmsWithToken(accessToken,"+989919901583", randomCode);
     }
     console.log('=================================================');
 }
